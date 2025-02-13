@@ -1,0 +1,119 @@
+﻿/* Sidebar */
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f7f7f7;
+}
+.sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 200px;
+    height: 100%; 
+    background: rgba(88, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    color: #ffffff;
+    z-index: 1000;
+}
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .sidebar ul li {
+            padding: 10px 0;
+        }
+
+            .sidebar ul li a {
+                text-decoration: none;
+                color: #b4b4b4;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                padding: 10px 20px;
+                transition: background-color 0.3s ease;
+            }
+
+                .sidebar ul li a:hover {
+                    background-color: rgba(255, 255, 255, 0.2);
+                    border-radius: 4px;
+                }
+
+                .sidebar ul li a i {
+                    margin-right: 10px;
+                }
+
+/* Main Content */
+main {
+    margin-left: 50px;
+    padding: 20px;
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+.container {
+    margin-top: 30px;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Adds spacing between cards */
+}
+
+
+.card-img-top {
+    border-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+   
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    color: #555;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+.btn-link {
+    text-decoration: none;
+    color: #007bff;
+}
+
+    .btn-link:hover {
+        text-decoration: underline;
+    }
+
+/* Fix footer overlap */
+footer {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}

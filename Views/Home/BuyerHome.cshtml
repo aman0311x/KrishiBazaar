@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Users> SignInManager
+@inject UserManager<Users> UserManager
+
+@{
+    ViewData["Title"] = "Buyer Dashboard";
+}
+
+<!-- Link the external CSS file -->
+<link rel="stylesheet" href="~/css/buyerhome.css" />
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Fixed Sidebar -->
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#"><i class="fas fa-rss"></i> Posts</a></li>
+                    <li><a href="#"><i class="fas fa-file-upload"></i> Create Post</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-bag"></i> My Posts</a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i> Wishlist</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+
+        <!-- Full-screen Main Content -->
+            <div class="container">
+                <h1 class="text-center mb-4">Krishi Bazaar</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images/gajor.jpeg" class="card-img-top" alt="Gourd">
+                            <div class="card-body">
+                                <h5 class="card-title">Gourd</h5>
+                                <p class="card-text">Quantity: 15</p>
+                                <p class="card-text">Price(Per Unit): $90</p>
+                                <button class="btn btn-success">Add to Cart</button>
+                                <a href="#" class="btn btn-link">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images/milk.jpeg" class="card-img-top" alt="Milk">
+                            <div class="card-body">
+                                <h5 class="card-title">Milk</h5>
+                                <p class="card-text">Quantity: 20</p>
+                                <p class="card-text">Price(Per Unit): $25</p>
+                                <button class="btn btn-success">Add to Cart</button>
+                                <a href="#" class="btn btn-link">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/milk.jpeg" class="card-img-top" alt="Milk">
+                        <div class="card-body">
+                            <h5 class="card-title">Milk</h5>
+                            <p class="card-text">Quantity: 20</p>
+                            <p class="card-text">Price(Per Unit): $25</p>
+                            <button class="btn btn-success">Add to Cart</button>
+                            <a href="#" class="btn btn-link">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/milk.jpeg" class="card-img-top" alt="Milk">
+                        <div class="card-body">
+                            <h5 class="card-title">Milk</h5>
+                            <p class="card-text">Quantity: 20</p>
+                            <p class="card-text">Price(Per Unit): $25</p>
+                            <button class="btn btn-success">Add to Cart</button>
+                            <a href="#" class="btn btn-link">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/milk.jpeg" class="card-img-top" alt="Milk">
+                        <div class="card-body">
+                            <h5 class="card-title">Milk</h5>
+                            <p class="card-text">Quantity: 20</p>
+                            <p class="card-text">Price(Per Unit): $25</p>
+                            <button class="btn btn-success">Add to Cart</button>
+                            <a href="#" class="btn btn-link">Details</a>
+                        </div>
+                    </div>
+                </div>
+                    <!-- Add more products here in similar structure -->
+                </div>
+            </div>
+    </div>
+</div>
+

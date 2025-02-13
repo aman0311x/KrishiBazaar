@@ -1,0 +1,121 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Users> signInManager;
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KrishiBazaar - Connecting Farmers & Buyers</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-primary text-white">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-controller="Home" asp-action="Index">KrishiBazaar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Home" asp-action="Services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Home" asp-action="BuyerHome">Dashboard</a>
+                            </li>
+                        }
+                        <partial name="_LoginPartial" />
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    @* **Hero Section শুধুমাত্র Home Page-এ দেখানো হবে** *@
+    @if (currentController == "Home" && currentAction == "Index")
+    {
+        <section class="hero position-relative text-white text-center d-flex align-items-center justify-content-center"
+                 style="background-image: url('https://i.ibb.co/M9vBBcq/banner.jpg'); background-size: cover; background-position: center; height: 100vh;">
+            <div class="hero-overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h1 class="display-4 fw-bold">Secure Your Digital World with Confidence</h1>
+                        <p class="lead">Manage, Generate, and Protect your passwords effortlessly with our advanced Password Manager. Your security is our priority, combining robust encryption and intuitive tools for complete peace of mind.</p>
+                        <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="Market">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-5 bg-light">
+            <div class="container text-center">
+                <h2 class="text-4xl font-bold text-success">Our Services</h2>
+                <p class="mt-2 text-lg text-muted">Discover how we make agriculture better for everyone</p>
+
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class="card shadow-lg p-4 text-center rounded h-100 d-flex flex-column">
+                            <h3 class="h5 font-weight-bold mb-3">Easy Registration & Verification</h3>
+                            <p class="text-muted flex-grow-1">Simplified onboarding for farmers to start selling quickly.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow-lg p-4 text-center rounded h-100 d-flex flex-column">
+                            <h3 class="h5 font-weight-bold mb-3">Secure Transactions</h3>
+                            <p class="text-muted flex-grow-1">Ensuring data security and building trust for all users.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow-lg p-4 text-center rounded h-100 d-flex flex-column">
+                            <h3 class="h5 font-weight-bold mb-3">Real-Time Market Access</h3>
+                            <p class="text-muted flex-grow-1">Buyers can browse fresh produce instantly.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow-lg p-4 text-center rounded h-100 d-flex flex-column">
+                            <h3 class="h5 font-weight-bold mb-3">Logistics Assistance</h3>
+                            <p class="text-muted flex-grow-1">Helping farmers deliver goods efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    }
+
+    <div class="container my-5">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="bg-primary text-white fixed-bottom text-center py-3 mt-4">
+        <div class="container">
+            &copy; 2025 KrishiBazaar | <a href="/Home/Privacy" class="text-white">Privacy Policy</a>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
