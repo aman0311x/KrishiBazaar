@@ -41,8 +41,6 @@ KrishiBazaar is a digital platform that connects farmers directly with buyers, e
 2. **Make changes** and commit with a meaningful message.
 3. **Create a pull request** to the main branch.
 
-## Contact
-For any queries, reach out to the project team.
 
 ---
 
