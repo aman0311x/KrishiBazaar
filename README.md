@@ -19,7 +19,7 @@ KrishiBazaar is a digital platform that connects farmers directly with buyers, e
 ## Installation & Setup
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/KrishiBazaar.git
+   git clone https://github.com/aman0311x/KrishiBazaar
    cd krishibazaar
    ```
 2. **Install dependencies:**
