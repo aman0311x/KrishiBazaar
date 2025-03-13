@@ -1,0 +1,23 @@
+﻿@model KrishiBazaarProject.Models.PrimaryHub
+
+<h2>Create Primary Hub</h2>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+<form method="post">
+    <div class="mb-3">
+        <label>Location</label>
+        <select name="LocationID" class="form-control" required>
+            @foreach (var location in ViewBag.Locations)
+            {
+                <option value="@location.PostalCode">@location.District, @location.Upazila, @location.Thana</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Capacity</label>
+        <input type="number" name="Capacity" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

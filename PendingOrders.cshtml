@@ -1,0 +1,33 @@
+﻿@model List<KrishiBazaarProject.Models.Orders>
+
+<h2>Pending Orders</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Product</th>
+            <th>Buyer</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderID</td>
+                <td>@order.Product.Name</td>
+                <td>@order.User.FullName</td>
+                <td>@order.QuantityToBuy</td>
+                <td>@order.TotalPrice</td>
+                <td>
+                    <form asp-action="ApproveDelivery" method="post">
+                        <input type="hidden" name="orderId" value="@order.OrderID" />
+                        <button type="submit" class="btn btn-success">Approve Delivery</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,113 @@
+﻿@model List<dynamic>
+@{
+    ViewData["Title"] = "Delivered Orders";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/BuyerDashboard/DeliveredOrders.css" />
+</head>
+
+<div class="main-container">
+    <nav class="sidebar">
+        <h3 class="sidebar-title">Dashboard</h3>
+        <ul class="sidebar-menu">
+            <li><a href="@Url.Action("Index", "BuyerDashboard")">Home</a></li>
+            <li><a href="@Url.Action("TrackOrders", "BuyerDashboard")">Track My Orders</a></li>
+            <li><a href="@Url.Action("DeliveredOrders", "BuyerDashboard")">Delivered Orders</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="@Url.Action("Cart", "BuyerDashboard")">Cart</a></li>
+            <li>
+                <form asp-action="Logout" asp-controller="Auth" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <h2 class="delivered-orders-title">Delivered Orders</h2>
+    
+
+        
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+            }
+
+            @if (Model.Count == 0)
+            {
+                <div class="alert alert-info">No delivered orders found.</div>
+            }
+            else
+            {
+                <div class="row">
+                    @foreach (var order in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card delivered-order-card">
+                                <img src="@order.Product.Photos" class="card-img-top delivered-order-img" alt="Product Image">
+                                <div class="card-body">
+                                    <h5 class="card-title delivered-order-title">@order.Product.Name</h5>
+                                    <p class="card-text">Quantity: @order.QuantityToBuy</p>
+                                    <p class="card-text">Total Price: @order.TotalPrice</p>
+
+                                    @if (!order.IsReviewed)
+                                    {
+                                        <button class="btn btn-warning review-btn" onclick="openReviewModal(@order.OrderID)">Review</button>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success reviewed-badge">Reviewed</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        
+
+        <!-- Review Modal -->
+        <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reviewModalLabel">Submit Review</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post" asp-action="SubmitReview" asp-controller="BuyerDashboard">
+                        <div class="modal-body">
+                            <input type="hidden" id="orderIdInput" name="orderId" />
+
+                            <label for="rating" class="form-label">Rating (1-5):</label>
+                            <select class="form-select" id="rating" name="rating" required>
+                                <option value="1">1 Star</option>
+                                <option value="2">2 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="5">5 Stars</option>
+                            </select>
+
+                            <label for="comment" class="form-label mt-3">Comment:</label>
+                            <textarea class="form-control" id="comment" name="comment" placeholder="Optional"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<script>
+    function openReviewModal(orderId) {
+        document.getElementById("orderIdInput").value = orderId;
+        var reviewModal = new bootstrap.Modal(document.getElementById("reviewModal"));
+        reviewModal.show();
+    }
+</script>

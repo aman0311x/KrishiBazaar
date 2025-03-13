@@ -1,0 +1,38 @@
+﻿@model List<KrishiBazaarProject.ViewModels.OrderRouteViewModel>
+
+@{
+    ViewData["Title"] = "Track Order";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/BuyerDashboard/TrackOrders.css" />
+</head>
+
+    <h2 class="text-center mb-4">Track Order</h2>
+    
+
+    
+
+        @foreach (var order in Model)
+        {
+            <div class="card mb-4 p-4 order-card">
+                <h4 class="order-id-title">Order ID: @order.OrderID</h4>
+                <div class="d-flex justify-content-center align-items-center route-container">
+                    @for (int i = 0; i < order.RoutePoints.Count; i++)
+                    {
+                        <div class="route-step text-center mx-3">
+                            <div class="route-point p-3 rounded bg-light">
+                                <strong>Step @(i + 1)</strong><br />
+                                @order.RoutePoints[i]
+                            </div>
+                        </div>
+                        @if (i < order.RoutePoints.Count - 1)
+                        {
+                            <span class="mx-2 arrow">➡️</span> <!-- Arrow after route box -->
+                        }
+                    }
+                </div>
+            </div>
+        }
+    
+
